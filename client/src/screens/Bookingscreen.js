@@ -3,12 +3,21 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import moment from "moment";
 
 function Bookingscreen() {
   const { id } = useParams();
+  const { fromdate } = useParams();
+  const { todate } = useParams();
+
+  const totaldays = 4;
+
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState();
   const [room, setroom] = useState();
+  const [totalamount, settotalamount] = useState();
+
+  console.log({ fromdate });
 
   useEffect(() => {
     async function fetchData() {
@@ -18,6 +27,7 @@ function Bookingscreen() {
           await axios.post("/api/rooms/getroombyid", { roomid: id })
         ).data;
         console.log(data);
+        settotalamount(data.rentperday * totaldays);
         setroom(data);
 
         setloading(false);
@@ -29,6 +39,21 @@ function Bookingscreen() {
     }
     fetchData();
   }, [id]);
+  async function bookRoom() {
+    const bookigDetails = {
+      room,
+      userid: JSON.parse(localStorage.getItem("currentUser")),
+      fromdate,
+      todate,
+      totalamount,
+      totaldays,
+    };
+    try {
+      const result = await axios.post("api/bookings/bookroom", bookigDetails);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -50,7 +75,7 @@ function Bookingscreen() {
             <div className="col-md-5">
               <div>
                 <h1>
-                  <b>Booking Details</b>
+                  <b>Booking Details </b>
                 </h1>
                 <hr />
 
@@ -58,10 +83,10 @@ function Bookingscreen() {
                   <b>Name</b>
                 </p>
                 <p>
-                  <b>From Date</b>
+                  <b>From Date {fromdate}</b>
                 </p>
                 <p>
-                  <b>To Date</b>
+                  <b>To Date {todate} </b>
                 </p>
                 <p>
                   <b>Max Count : {room.maxcount} </b>
@@ -70,21 +95,23 @@ function Bookingscreen() {
 
               <div className="mt-5">
                 <h1>
-                  <b>Amount</b>
+                  <b>Amount </b>
                 </h1>
                 <hr />
                 <p>
-                  Total Days : <b></b>
+                  Total Days : {totaldays} <b></b>
                 </p>
                 <p>
                   Rent Per Day : <b>{room.rentperday}</b>
                 </p>
                 <h1>
-                  <b>Total Amount : /-</b>
+                  <b>Total Amount : {totalamount}/-</b>
                 </h1>
               </div>
               <div style={{ float: "right" }}>
-                <button className="btn btn-primary">pay now</button>
+                <button className="btn btn-primary" onClick={bookRoom}>
+                  pay now
+                </button>
               </div>
             </div>
           </div>

@@ -15,7 +15,10 @@ function App() {
           <Route path="/home" element={<Homescreen />} />
         </Routes>
         <Routes>
-          <Route path="/book/:id" element={<Bookingscreen />} />
+          <Route
+            path="/book/:id/:fromdate/:todate"
+            element={<Bookingscreen />}
+          />
         </Routes>
         <Routes>
           <Route path="/register" element={<Registerscreen />} />
