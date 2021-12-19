@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registerscreen from "./screens/Registerscreen";
 import Loginscreen from "./screens/Loginscreen";
 import Adminscreen from "./screens/Adminscreen";
+import Landingscreen from "./screens/Landingscreen";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/Admin" element={<Adminscreen />} />
+        </Routes>
+        <Routes>
+          <Route path="/" element={<Landingscreen />} />
         </Routes>
       </BrowserRouter>
     </div>

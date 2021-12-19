@@ -35,3 +35,24 @@ input{
   margin-top: 10px !important;
   border: 1px solid !important;
 }
+.ant-tabs-tab , .ant-tabs-tab-active , .ant-tabs-tab-btn {
+  color:black !important;
+}
+.ant-tabs-ink-bar .ant-tabs-ink-bar-animated{
+  background-color:black !important;
+}
+.ant-picker-input input{
+  border:none !important;
+}
+
+.landing{
+  
+  height:calc(100vh) !important;
+  background-color:rgb(0, 0, 0) !important;
+  
+}
+.landing .btn{
+  background-color:white !important;
+  color:black !important;
+  margin-top: 10px !important;
+}
