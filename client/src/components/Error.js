@@ -4,7 +4,7 @@ function Error() {
   return (
     <div>
       <div class="alert alert-danger" role="alert">
-        Something went wrong
+        <h1>soory Something went rong</h1>
       </div>
     </div>
   );

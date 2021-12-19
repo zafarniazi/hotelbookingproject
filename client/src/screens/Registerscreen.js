@@ -1,19 +1,34 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
+import Sucess from "../components/Sucess";
 
 function Registerscreen() {
+  const [loading, setloading] = useState();
+  const [error, seterror] = useState();
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
-  const [pasword, setpasword] = useState("");
+  const [password, setpasword] = useState("");
   const [cpasword, setcpasword] = useState("");
+  const [success, setsuccess] = useState(false);
   async function register() {
-    if (pasword === cpasword) {
-      const user = { name, email, pasword, cpasword };
+    if (password === cpasword) {
+      const user = { name, email, password, cpasword };
       console.log(user);
       try {
+        setloading(true);
         const result = await axios.post("/api/users/register", user).data;
+        setsuccess(true);
+        setloading(false);
+        setemail("");
+        setname("");
+        setcpasword("");
+        setpasword("");
       } catch (error) {
         console.log(error);
+        setloading(false);
+        seterror(true);
       }
     } else {
       alert("Password not match");
@@ -22,8 +37,12 @@ function Registerscreen() {
 
   return (
     <div>
+      {loading && <Loader />}
+      {error && <Error />}
+
       <div className="row justify-content-center mt-5">
         <div className="col-md-5 mt-5 text-left shadow-lg p-3 mb-5 bg-white rounded">
+          {success && <Sucess message="Registration sucess" />}
           <div>
             <h1>Register</h1>
 
@@ -50,8 +69,8 @@ function Registerscreen() {
             <input
               type="text"
               className="form-control"
-              placeholder="pasword"
-              value={pasword}
+              placeholder="password"
+              value={password}
               onChange={(e) => {
                 setpasword(e.target.value);
               }}
