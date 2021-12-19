@@ -5,6 +5,7 @@ import Bookingscreen from "./screens/Bookingscreen";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registerscreen from "./screens/Registerscreen";
 import Loginscreen from "./screens/Loginscreen";
+import Adminscreen from "./screens/Adminscreen";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/Login" element={<Loginscreen />} />
+        </Routes>
+        <Routes>
+          <Route path="/Admin" element={<Adminscreen />} />
         </Routes>
       </BrowserRouter>
     </div>
