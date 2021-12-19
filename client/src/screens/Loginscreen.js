@@ -4,6 +4,8 @@ import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from "../components/Sucess";
 import Sucess from "../components/Sucess";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export default function Loginscreen() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -11,9 +13,10 @@ export default function Loginscreen() {
   const [error, seterror] = useState(false);
   const [success, setsuccess] = useState(false);
 
+  let navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("currentUser")) {
-      window.location.href = "/";
+      navigate("/");
     }
   }, []);
 
@@ -74,9 +77,11 @@ export default function Loginscreen() {
               LOGIN
             </button>
             <br />
-            <a style={{ color: "black" }} href="/register" className="mt-2">
-              Click Here To Register
-            </a>
+            <Link to={`/register`}>
+              <button className="btn btn-primary  btn btn-space ">
+                Register now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

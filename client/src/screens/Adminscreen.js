@@ -4,16 +4,18 @@ import axios from "axios";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Sucess from "../components/Sucess";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const { TabPane } = Tabs;
 
 function Adminscreen() {
+  let navigate = useNavigate();
   useEffect(() => {
     if (!JSON.parse(localStorage.getItem("currentUser")).isAdmin) {
-      window.location.href = "/home";
+      navigate("/home");
     }
-  }, []);
+  }, [navigate]);
   return (
     <div className="mt-3 ml-3 bs">
       <h1>Admin pannel</h1>
