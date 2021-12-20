@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
-import Success from "../components/Sucess";
 import Sucess from "../components/Sucess";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";

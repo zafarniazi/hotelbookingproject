@@ -3,7 +3,6 @@ import { Tabs } from "antd";
 import axios from "axios";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
-import Sucess from "../components/Sucess";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
