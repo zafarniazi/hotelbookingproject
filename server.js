@@ -6,9 +6,7 @@ const roomsRoute = require("./routes/roomRoutes");
 const usersRoute = require("./routes/userRoute");
 const bookingsRoute = require("./routes/bookingsRoute");
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+
 app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/booking", bookingsRoute);
