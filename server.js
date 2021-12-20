@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 5000;
 const bdconfig = require("./db");
+const path = require("path");
 const roomsRoute = require("./routes/roomRoutes");
 const usersRoute = require("./routes/userRoute");
 const bookingsRoute = require("./routes/bookingsRoute");
@@ -13,6 +13,14 @@ app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/booking", bookingsRoute);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client/build/index.html"));
+  });
+}
+
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => `Server running on port port 🔥`);
