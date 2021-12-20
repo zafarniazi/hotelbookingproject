@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 5000;
 const bdconfig = require("./db");
+const path = require("path");
 const roomsRoute = require("./routes/roomRoutes");
 const usersRoute = require("./routes/userRoute");
 const bookingsRoute = require("./routes/bookingsRoute");
