@@ -57,7 +57,7 @@ function Registerscreen() {
             />
 
             <input
-              type="text"
+              type="email"
               className="form-control"
               placeholder="email"
               value={email}
@@ -67,7 +67,7 @@ function Registerscreen() {
             />
 
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="password"
               value={password}
@@ -77,7 +77,7 @@ function Registerscreen() {
             />
 
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="cpasword"
               value={cpasword}

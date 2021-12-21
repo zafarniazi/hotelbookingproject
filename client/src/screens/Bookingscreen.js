@@ -49,7 +49,7 @@ function Bookingscreen() {
       totaldays,
     };
     try {
-      const result = await axios.post("api/bookings/bookroom", bookigDetails);
+      const result = await axios.post("api/booking/bookroom", bookigDetails);
     } catch (error) {
       console.log(error);
     }

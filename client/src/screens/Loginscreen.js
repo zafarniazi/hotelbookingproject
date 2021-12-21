@@ -50,20 +50,22 @@ export default function Loginscreen() {
           <div>
             <input
               required
-              type="text"
-              placeholder="email"
+              type="email"
+              placeholder="email@gmail.com"
               className="form-control mt-1"
+              aria-describedby="emailHelp"
               value={email}
               onChange={(e) => {
                 setemail(e.target.value);
               }}
             />
+
             <input
-              type="text"
+              type="password"
               placeholder="password"
               className="form-control mt-1"
-              value={password}
               required
+              value={password}
               onChange={(e) => {
                 setpassword(e.target.value);
               }}
